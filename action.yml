@@ -111,6 +111,7 @@ runs:
             BOARD_FIRMWARE_INSTALL="-full" \
             SHARE_LOG=yes \
             DEBUG=yes \
+            ARTIFACT_IGNORE_CACHE=yes \
             COMPRESS_OUTPUTIMAGE=sha,gpg,xz
         else
             ./compile.sh \
@@ -127,6 +128,7 @@ runs:
             BOARD_FIRMWARE_INSTALL="-full" \
             SHARE_LOG=yes \
             DEBUG=yes \
+            ARTIFACT_IGNORE_CACHE=yes \
             COMPRESS_OUTPUTIMAGE=sha,gpg,xz
         fi
     - name: Upload
