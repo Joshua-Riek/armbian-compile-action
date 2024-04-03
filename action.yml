@@ -22,8 +22,8 @@ runs:
     - name: Checkout
       uses: actions/checkout@v3
       with:
-        repository: armbian/armbian-build
-        ref: main
+        repository: Joshua-Riek/armbian-build
+        ref: nanopct6
         path: build
     - name: Set env
       shell: bash
@@ -44,17 +44,6 @@ runs:
           echo "desktop-environment=gnome" >> $GITHUB_ENV
           echo "desktop-environment-config-name=config_base" >> $GITHUB_ENV
           echo "expert=yes" >> $GITHUB_ENV
-          if [ "${{ inputs.branch }}" == "legacy" ]; then
-            if [[ "${{ inputs.board }}" == "rock-3a" || "${{ inputs.board }}" == "hinlink-h66k" || "${{ inputs.board }}" == "hinlink-h68k" ]]; then
-              echo "desktop_appgroups_selected=\"3dsupport browsers chat desktop_tools editors email internet multimedia office programming remote_desktop\"" >> $GITHUB_ENV
-            elif [[ "${{ inputs.board }}" == "rock-5b" || "${{ inputs.board }}" == "hinlink-h88k" || "${{ inputs.board }}" == "orangepi5" || "${{ inputs.board }}" == "rock-5a" ]]; then
-              echo "desktop_appgroups_selected=\"3dsupport browsers chat desktop_tools editors email internet multimedia office programming remote_desktop\"" >> $GITHUB_ENV
-            else
-              echo "desktop_appgroups_selected=\"3dsupport browsers chat desktop_tools editors email internet multimedia office programming remote_desktop\"" >> $GITHUB_ENV
-            fi
-          else
-            echo "desktop_appgroups_selected=\"3dsupport browsers chat desktop_tools editors email internet multimedia office programming remote_desktop\"" >> $GITHUB_ENV
-          fi
         elif [ ${{ inputs.flavor }} == "cli" ]
         then
           echo "release=jammy" >> $GITHUB_ENV
@@ -63,17 +52,6 @@ runs:
           echo "desktop-environment=gnome" >> $GITHUB_ENV
           echo "desktop-environment-config-name=config_base" >> $GITHUB_ENV
           echo "expert=yes" >> $GITHUB_ENV
-          if [ "${{ inputs.branch }}" == "legacy" ]; then
-            if [[ "${{ inputs.board }}" == "rock-3a" || "${{ inputs.board }}" == "hinlink-h66k" || "${{ inputs.board }}" == "hinlink-h68k" ]]; then
-              echo "desktop_appgroups_selected=\"3dsupport browsers chat desktop_tools editors email internet multimedia office programming remote_desktop\"" >> $GITHUB_ENV
-            elif [[ "${{ inputs.board }}" == "rock-5b" || "${{ inputs.board }}" == "hinlink-h88k" || "${{ inputs.board }}" == "orangepi5" || "${{ inputs.board }}" == "rock-5a" ]]; then
-              echo "desktop_appgroups_selected=\"3dsupport browsers chat desktop_tools editors email internet multimedia office programming remote_desktop\"" >> $GITHUB_ENV
-            else
-              echo "desktop_appgroups_selected=\"3dsupport browsers chat desktop_tools editors email internet multimedia office programming remote_desktop\"" >> $GITHUB_ENV
-            fi
-          else
-            echo "desktop_appgroups_selected=\"3dsupport browsers chat desktop_tools editors email internet multimedia office programming remote_desktop\"" >> $GITHUB_ENV
-          fi
         fi
     - name: Build
       shell: bash
