@@ -23,7 +23,7 @@ runs:
       uses: actions/checkout@v3
       with:
         repository: Joshua-Riek/armbian-build
-        ref: nanopct6
+        ref: opi5pro
         path: build
     - name: Set env
       shell: bash
